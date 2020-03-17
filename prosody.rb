@@ -90,19 +90,19 @@ class Prosody < Formula
     end
 
     # set lua paths for our prosody-luarocks
-    inreplace ["#{prefix}/bin/prosody", "#{prefix}/bin/prosodyctl"] do |s|
-      rep = "-- Will be modified by configure script if run --"
-      luapaths = <<~EOS.chomp
-      package.path=[[#{libexec}/share/lua/5.1/?.lua;#{libexec}/share/lua/5.1/?/init.lua]];
-      package.cpath=[[#{libexec}/lib/lua/5.1/?.so]];
-      EOS
-      s.sub! rep, "#{rep}\n\n#{luapaths}"
-    end
+    #inreplace ["#{prefix}/bin/prosody", "#{prefix}/bin/prosodyctl"] do |s|
+    #  rep = "-- Will be modified by configure script if run --"
+    #  luapaths = <<~EOS.chomp
+    #  package.path=[[#{libexec}/share/lua/5.1/?.lua;#{libexec}/share/lua/5.1/?/init.lua]];
+    #  package.cpath=[[#{libexec}/lib/lua/5.1/?.so]];
+    #  EOS
+    #  s.sub! rep, "#{rep}\n\n#{luapaths}"
+    #end
 
-    system "#{bin}/prosody-luarocks", "install", "luasocket"
-    system "#{bin}/prosody-luarocks", "install", "luasec"
-    system "#{bin}/prosody-luarocks", "install", "luafilesystem"
-    system "#{bin}/prosody-luarocks", "install", "luaexpat", "EXPAT_DIR=#{Formula["expat"].opt_prefix}"
+    #system "#{bin}/prosody-luarocks", "install", "luasocket"
+    #system "#{bin}/prosody-luarocks", "install", "luasec"
+    #system "#{bin}/prosody-luarocks", "install", "luafilesystem"
+    #system "#{bin}/prosody-luarocks", "install", "luaexpat", "EXPAT_DIR=#{Formula["expat"].opt_prefix}"
     # system "#{bin}/prosody-luarocks", "install", "lua-zlib"
   end
 
